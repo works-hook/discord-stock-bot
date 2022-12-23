@@ -1,1 +1,0 @@
-# discord-stock-bot
