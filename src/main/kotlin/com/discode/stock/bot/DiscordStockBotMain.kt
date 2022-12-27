@@ -4,7 +4,9 @@ import com.discode.stock.bot.slash.BotSlashAdmin
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.OnlineStatus
 import net.dv8tion.jda.api.entities.Activity
+import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.Commands
+import net.dv8tion.jda.api.interactions.commands.build.OptionData
 
 fun main() {
     val jda = JDABuilder.createDefault(
@@ -17,6 +19,14 @@ fun main() {
 
     jda.updateCommands().addCommands(
         Commands.slash("ping", "What will the bot say?"),
-        Commands.slash("exchange", "현재 환률은?"),
+        Commands.slash("exchanges", "현재 환률은?"),
+        Commands.slash("exchange", "환률을 검색하세요!")
+            .addOptions(
+                OptionData(OptionType.STRING, "search", "조회할 환률을 선택해주세요.")
+                    .addChoice("미국 USD", "USD")
+                    .addChoice("일본 JPY", "JPY")
+                    .addChoice("유럽연합 EUR", "EUR")
+                    .addChoice("중국 CNY", "CNY")
+            )
     ).queue();
 }
