@@ -16,14 +16,14 @@ object BotSlashAdmin: ListenerAdapter() {
                     .queue() // Queue both reply and edit
             }
             "exchanges" -> {
-                event.reply("환율 수집 중이에요!").setEphemeral(true)
-                    .flatMap { event.channel.sendMessageEmbeds(exchanges()) }
+                event.reply("환율 수집 중이에요!").setEphemeral(false)
+                    .flatMap { event.hook.editOriginalEmbeds(exchanges()) }
                     .queue()
             }
             "exchange" -> {
                 val value = event.options[0].asString
-                event.reply("환율 수집 중이에요!").setEphemeral(true)
-                    .flatMap { event.channel.sendMessageEmbeds(searchExchange(value)) }
+                event.reply("환율 수집 중이에요!").setEphemeral(false)
+                    .flatMap { event.hook.editOriginalEmbeds(searchExchange(value)) }
                     .queue()
             }
         }
