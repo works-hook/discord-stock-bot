@@ -24,7 +24,7 @@ object ExchangesObject {
     ) {
         fun toExchangeValue(): String {
             val state = if (fluctuationsRatio.toDouble() > 0) ":red_circle:" else ":blue_circle:"
-            return "${closePrice}원 $state $compareToPreviousClosePrice%"
+            return "$state $compareToPreviousClosePrice%"
         }
     }
 
@@ -43,7 +43,9 @@ object ExchangesObject {
             .setDescription(nowDate())
             .setColor(Color(6, 85, 53))
         exchange.marketIndexInfos.forEach {
-            builder.addField(it.name, it.toExchangeValue(), false)
+            builder.addField(it.name, it.closePrice, true)
+            builder.addField("\u200b", "\u200b", true)
+            builder.addField("\u200b", it.toExchangeValue(), true)
         }
         return builder.build()
     }
