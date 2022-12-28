@@ -21,10 +21,14 @@ object BotSlashAdmin: ListenerAdapter() {
                     .queue()
             }
             "exchange" -> {
-                val value = event.options[0].asString
-                event.reply("환율 수집 중이에요!").setEphemeral(false)
-                    .flatMap { event.hook.editOriginalEmbeds(searchExchange(value)) }
-                    .queue()
+                if (event.options.isEmpty()) {
+                    event.reply(":warning: 옵션을 선택해주세요!").setEphemeral(false).queue()
+                } else {
+                    val value = event.options[0].asString
+                    event.reply("환율 수집 중이에요!").setEphemeral(false)
+                        .flatMap { event.hook.editOriginalEmbeds(searchExchange(value)) }
+                        .queue()
+                }
             }
         }
     }
