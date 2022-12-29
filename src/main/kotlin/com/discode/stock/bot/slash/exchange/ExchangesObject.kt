@@ -44,8 +44,8 @@ object ExchangesObject {
             .setColor(Color(6, 85, 53))
         exchange.marketIndexInfos.forEach {
             builder.addField(it.name, it.closePrice, true)
-            builder.addField("\u200b", "\u200b", true)
-            builder.addField("\u200b", it.toExchangeValue(), true)
+                .addField("\u200b", "\u200b", true)
+                .addField("\u200b", it.toExchangeValue(), true)
         }
         return builder.build()
     }

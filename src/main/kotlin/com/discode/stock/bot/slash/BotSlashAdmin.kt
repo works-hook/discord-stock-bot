@@ -2,6 +2,7 @@ package com.discode.stock.bot.slash
 
 import com.discode.stock.bot.slash.exchange.ExchangesObject.exchanges
 import com.discode.stock.bot.slash.exchange.SearchExchangeObject.searchExchange
+import com.discode.stock.bot.slash.topSearch.TopSearchObject.topSearch
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
@@ -29,6 +30,11 @@ object BotSlashAdmin: ListenerAdapter() {
                         .flatMap { event.hook.editOriginalEmbeds(searchExchange(value)) }
                         .queue()
                 }
+            }
+            "top-search" -> {
+                event.reply("인기 종목 수집중이에요!").setEphemeral(false)
+                    .flatMap { event.hook.editOriginal(topSearch()) }
+                    .queue()
             }
         }
     }

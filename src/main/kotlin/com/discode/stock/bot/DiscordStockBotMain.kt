@@ -27,6 +27,7 @@ fun main() {
                     .addChoice("일본 JPY", "JPY")
                     .addChoice("유럽연합 EUR", "EUR")
                     .addChoice("중국 CNY", "CNY")
-            )
+            ),
+        Commands.slash("top-search", "현재 인기 검색 종목은?")
     ).queue();
 }
