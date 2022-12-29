@@ -16,36 +16,18 @@ object TopSearchObject {
     const val M_TOP_SEARCH_STOCK = "https://m.stock.naver.com/api/mystock/group/-2"
 
     private data class TopSearchResponse(
-        val popularGroup: Boolean,
         val stocks: List<Stocks>,
-        val stocksCount: String,
-        val groupName: String,
-        val groupId: Number,
     ) 
         
 
     private data class Stocks (
-        val nationType: String,
         val imageCharts: ImageCharts,
         val stockExchangeName: String,
-        val stockExchangeType: StockExchangeType,
-        val marketStatus: String,
-        val localTradedAt: String,
-        val tradeStopType: TradeStopType,
-        val marketValueHangeul: String,
-        val accumulatedTradingValueKrwHangeul: String,
-        val accumulatedTradingValue: Number,
-        val accumulatedTradingVolume: String,
         val fluctuationsRatio: String,
-        val compareToPreviousPrice: CompareToPreviousPrice,
         val compareToPreviousClosePrice: String,
         val closePrice: String,
         val stockName: String,
-        val symbolCode: String,
-        val reutersCode: String,
         val itemCode: String,
-        val stockEndType: String,
-        val stockType: String,
     ) {
         fun toFluctuationsRatioValue(): String {
             val state = if (fluctuationsRatio.toDouble() > 0) ":red_circle:" else ":blue_circle:"
@@ -55,33 +37,6 @@ object TopSearchObject {
 
     private data class ImageCharts(
         val mini: String,
-    )
-
-    private data class StockExchangeType (
-        val name: String,
-        val nationName: String,
-        val nationCode: String,
-        val nameEng: String,
-        val nameKor: String,
-        val closePriceSendTime: String,
-        val endTime: String,
-        val startTime: String,
-        val delayTime: Number,
-        val nationType: String,
-        val zoneId: String,
-        val code: String,
-    )
-
-    private data class TradeStopType (
-        val name: String,
-        val text: String,
-        val code: String,
-    )
-
-    private data class CompareToPreviousPrice (
-        val name: String,
-        val text: String,
-        val code: String,
     )
 
     private fun getTopSearchStock(): TopSearchResponse {
