@@ -17,8 +17,7 @@ object TopSearchObject {
 
     private data class TopSearchResponse(
         val stocks: List<Stocks>,
-    ) 
-        
+    )
 
     private data class Stocks (
         val imageCharts: ImageCharts,
@@ -47,14 +46,13 @@ object TopSearchObject {
     private fun nowDate(date: LocalDateTime = LocalDateTime.now()) =
         run { date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) }
 
-
     fun topSearch(): MessageEditData {
         val topSearch = getTopSearchStock()
 
         val content = StringBuilder()
 
         content.append("** :rabbit: 현재 인기 종목은? **\n")
-        content.append("${nowDate()}\n\n")
+        content.append("${nowDate()} \n")
 
         val embedBuilder = EmbedBuilder()
         val embeds = mutableListOf<MessageEmbed>()
@@ -76,10 +74,10 @@ object TopSearchObject {
             embedBuilder.clear()
         }
 
-        val builder = MessageEditBuilder()
-        builder.setContent(content.toString())
+        return MessageEditBuilder()
+            .setContent(content.toString())
             .setEmbeds(embeds.subList(0, 5))
-        return builder.build()
+            .build()
     }
 
 }
