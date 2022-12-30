@@ -28,6 +28,15 @@ fun main() {
                     .addChoice("유럽연합 EUR", "EUR")
                     .addChoice("중국 CNY", "CNY")
             ),
-        Commands.slash("top-search", "현재 인기 검색 종목은?")
+        Commands.slash("top-search", "현재 인기 종목은?"),
+        Commands.slash("top-global", "글로벌 TOP 종목은?")
+            .addOptions(
+                OptionData(OptionType.STRING, "search", "나라를 선택해주세요!")
+                    .addChoice("미국", "USA")
+                    .addChoice("중국", "CHN")
+                    .addChoice("홍콩", "HKG")
+                    .addChoice("일본", "JPN")
+                    .addChoice("베트남", "VNM")
+            )
     ).queue();
 }

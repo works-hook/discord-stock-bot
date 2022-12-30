@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter
 
 object TopSearchObject {
 
-    const val M_TOP_SEARCH_STOCK = "https://m.stock.naver.com/api/mystock/group/-2"
+    private const val M_TOP_SEARCH_STOCK = "https://m.stock.naver.com/api/mystock/group/-2"
 
     private data class TopSearchResponse(
         val stocks: List<Stocks>,

@@ -2,6 +2,9 @@ package com.discode.stock.bot.slash
 
 import com.discode.stock.bot.slash.exchange.ExchangesObject.exchanges
 import com.discode.stock.bot.slash.exchange.SearchExchangeObject.searchExchange
+import com.discode.stock.bot.slash.globalSearch.GlobalSearchObject
+import com.discode.stock.bot.slash.globalSearch.GlobalSearchObject.globalSearch
+import com.discode.stock.bot.slash.topSearch.Country
 import com.discode.stock.bot.slash.topSearch.TopSearchObject.topSearch
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
@@ -35,6 +38,16 @@ object BotSlashAdmin: ListenerAdapter() {
                 event.reply("인기 종목 수집중이에요!").setEphemeral(false)
                     .flatMap { event.hook.editOriginal(topSearch()) }
                     .queue()
+            }
+            "top-global" -> {
+                if (event.options.isEmpty()) {
+                    event.reply(":warning: 옵션을 선택해주세요!").setEphemeral(false).queue()
+                } else {
+                    val value = Country.valueOf(event.options[0].asString)
+                    event.reply("TOP 종목 수집중이에요!").setEphemeral(false)
+                        .flatMap { event.hook.editOriginalEmbeds(globalSearch(value)) }
+                        .queue()
+                }
             }
         }
     }
