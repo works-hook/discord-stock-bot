@@ -62,11 +62,11 @@ object TopSearchObject {
                 .setColor(Color(156, 95, 207))
 
                 .addField("현재가", "${it.closePrice}원", true)
-                .addField("\u200b", "\u200b", true)
+                .addBlankField(true)
                 .addField("변동률", it.toFluctuationsRatioValue(), true)
 
                 .addField("변동가", it.compareToPreviousClosePrice, true)
-                .addField("\u200b", "\u200b", true)
+                .addBlankField(true)
                 .addField("종목 코드", it.itemCode, true)
 
                 .setThumbnail(it.imageCharts.mini)

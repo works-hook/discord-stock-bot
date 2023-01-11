@@ -3,6 +3,7 @@ package com.discode.stock.bot.slash
 import com.discode.stock.bot.slash.exchange.ExchangesObject.exchanges
 import com.discode.stock.bot.slash.exchange.SearchExchangeObject.searchExchange
 import com.discode.stock.bot.slash.globalSearch.GlobalSearchObject.globalSearch
+import com.discode.stock.bot.slash.news.MainNewsObject.mainNews
 import com.discode.stock.bot.slash.topSearch.Country
 import com.discode.stock.bot.slash.topSearch.TopSearchObject.topSearch
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
@@ -40,6 +41,11 @@ object BotSlashAdmin: ListenerAdapter() {
                 val value = Country.valueOf(event.options[0].asString)
                 event.reply("TOP 종목 수집중이에요!").setEphemeral(false)
                     .flatMap { event.hook.editOriginalEmbeds(globalSearch(value)) }
+                    .queue()
+            }
+            "main-news" -> {
+                event.reply("주요 뉴스 수집중이에요!").setEphemeral(false)
+                    .flatMap { event.hook.editOriginal(mainNews()) }
                     .queue()
             }
         }

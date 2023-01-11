@@ -37,6 +37,7 @@ fun main() {
                     .addChoice("홍콩", "HKG")
                     .addChoice("일본", "JPN")
                     .addChoice("베트남", "VNM")
-            )
+            ),
+        Commands.slash("main-news", "주요 뉴스")
     ).queue();
 }
