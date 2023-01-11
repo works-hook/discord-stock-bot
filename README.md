@@ -41,3 +41,8 @@
     - 베트남
 - main-news
   - 주식 관련 주요 뉴스를 조회하는 명령어입니다.
+
+### 참고 사이트
+- 임베드 메세지 포멧 사이트 : https://autocode.com/tools/discord/embed-builder/
+- JDA API : https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/package-summary.html
+- 여러가지 예제 코드들 : https://www.tabnine.com/code/java/classes/net.dv8tion.jda.core.EmbedBuilder
