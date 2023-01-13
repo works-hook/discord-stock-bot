@@ -46,3 +46,6 @@
 - 임베드 메세지 포멧 사이트 : https://autocode.com/tools/discord/embed-builder/
 - JDA API : https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/package-summary.html
 - 여러가지 예제 코드들 : https://www.tabnine.com/code/java/classes/net.dv8tion.jda.core.EmbedBuilder
+
+### 봇 설치 링크
+https://discord.com/api/oauth2/authorize?client_id=1055719276276887583&permissions=2147485696&scope=applications.commands%20bot
