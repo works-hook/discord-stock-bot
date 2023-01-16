@@ -1,4 +1,4 @@
-package com.discode.stock.bot.slash.topSearch
+package com.discode.stock.bot.slash.common
 
 enum class Country {
 

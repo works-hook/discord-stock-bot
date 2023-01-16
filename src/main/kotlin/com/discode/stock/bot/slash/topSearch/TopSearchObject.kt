@@ -1,5 +1,6 @@
 package com.discode.stock.bot.slash.topSearch
 
+import com.discode.stock.bot.slash.common.nowDate
 import com.google.gson.Gson
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
@@ -8,8 +9,6 @@ import net.dv8tion.jda.api.utils.messages.MessageEditData
 import java.awt.Color
 import java.lang.StringBuilder
 import java.net.URL
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 object TopSearchObject {
 
@@ -42,9 +41,6 @@ object TopSearchObject {
         val responseString = URL(M_TOP_SEARCH_STOCK).readText()
         return Gson().fromJson(responseString, TopSearchResponse::class.java)
     }
-    
-    private fun nowDate(date: LocalDateTime = LocalDateTime.now()) =
-        run { date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) }
 
     fun topSearch(): MessageEditData {
         val topSearch = getTopSearchStock()

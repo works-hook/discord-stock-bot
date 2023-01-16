@@ -1,13 +1,12 @@
 package com.discode.stock.bot.slash.globalSearch
 
-import com.discode.stock.bot.slash.topSearch.Country
+import com.discode.stock.bot.slash.common.Country
+import com.discode.stock.bot.slash.common.nowDate
 import com.google.gson.Gson
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import java.awt.Color
 import java.net.URL
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 object GlobalSearchObject {
 
@@ -35,9 +34,6 @@ object GlobalSearchObject {
         val responseString = URL(url).readText()
         return Gson().fromJson(responseString, GlobalResponse::class.java)
     }
-
-    private fun nowDate(date: LocalDateTime = LocalDateTime.now()) =
-        run { date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) }
 
     fun globalSearch(country: Country): MessageEmbed {
         val result = getGlobalSearch(country.toString())

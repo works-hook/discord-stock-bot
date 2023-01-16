@@ -3,8 +3,9 @@ package com.discode.stock.bot.slash
 import com.discode.stock.bot.slash.exchange.ExchangesObject.exchanges
 import com.discode.stock.bot.slash.exchange.SearchExchangeObject.searchExchange
 import com.discode.stock.bot.slash.globalSearch.GlobalSearchObject.globalSearch
+import com.discode.stock.bot.slash.help.HelpObject.help
 import com.discode.stock.bot.slash.news.MainNewsObject.mainNews
-import com.discode.stock.bot.slash.topSearch.Country
+import com.discode.stock.bot.slash.common.Country
 import com.discode.stock.bot.slash.topSearch.TopSearchObject.topSearch
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
@@ -18,6 +19,11 @@ object BotSlashAdmin: ListenerAdapter() {
                 event.reply("What will the bot say?").setEphemeral(false) // reply or acknowledge
                     .flatMap { event.hook.editOriginalFormat("Pong! : %d ms", System.currentTimeMillis() - time) } // then edit original
                     .queue() // Queue both reply and edit
+            }
+            "help" -> {
+                event.reply("도움말 조회 중이에요!").setEphemeral(false)
+                    .flatMap { event.hook.editOriginalEmbeds(help()) }
+                    .queue()
             }
             "exchange" -> {
                 if (event.options.isEmpty()) {

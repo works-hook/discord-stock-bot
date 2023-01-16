@@ -1,12 +1,11 @@
 package com.discode.stock.bot.slash.exchange
 
+import com.discode.stock.bot.slash.common.nowDate
 import com.google.gson.Gson
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import java.awt.Color
 import java.net.URL
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 object SearchExchangeObject {
 
@@ -39,9 +38,6 @@ object SearchExchangeObject {
         val responseString = URL(url).readText()
         return Gson().fromJson(responseString, SearchExchangeResponse::class.java)
     }
-
-    private fun nowDate(date: LocalDateTime = LocalDateTime.now()) =
-        run { date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) }
 
     fun searchExchange(code: String): MessageEmbed {
         val result = getDetailExchanges(code).result

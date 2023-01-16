@@ -19,6 +19,7 @@ fun main() {
 
     jda.updateCommands().addCommands(
         Commands.slash("ping", "What will the bot say?"),
+        Commands.slash("help", "도움말"),
         Commands.slash("exchange", "환률을 검색하세요!")
             .addOptions(
                 OptionData(OptionType.STRING, "search", "조회할 환률을 선택해주세요.")
