@@ -20,11 +20,9 @@
 ### command
 - ping
   - heath check를 하는 명령어입니다.
-- exchanges
-  - 현재 환률을 조회하는 명령어입니다.
 - exchange
-  - 나라를 선택해 해당 나라의 환률을 조회하는 명령어입니다.
-  - options
+  - 나라를 선택해 해당 나라의 환률을 조회하는 명령어입니다. 옵션을 선택하지 않으면 기본 환률 정보들을 조회합니다.
+  - options (필수 : X)
     - 미국 USD
     - 일본 JPY
     - 유럽연합 EUR
@@ -33,7 +31,7 @@
   - 현재 인기 종목을 조회하는 명령어입니다.
 - top-global
   - 나라를 선택해 해당 나라의 top 종목을 조회하는 명령어 입니다.
-  - options
+  - options (필수 : O)
     - 미국
     - 중국
     - 홍콩
@@ -42,10 +40,10 @@
 - main-news
   - 주식 관련 주요 뉴스를 조회하는 명령어입니다.
 
-### 참고 사이트
+### 봇 설치 링크
+https://discord.com/api/oauth2/authorize?client_id=1055719276276887583&permissions=2147485696&scope=applications.commands%20bot
+
+### 나중에 참고하면 좋을것같은 사이트
 - 임베드 메세지 포멧 사이트 : https://autocode.com/tools/discord/embed-builder/
 - JDA API : https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/package-summary.html
 - 여러가지 예제 코드들 : https://www.tabnine.com/code/java/classes/net.dv8tion.jda.core.EmbedBuilder
-
-### 봇 설치 링크
-https://discord.com/api/oauth2/authorize?client_id=1055719276276887583&permissions=2147485696&scope=applications.commands%20bot

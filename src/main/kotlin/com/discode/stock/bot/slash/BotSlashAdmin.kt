@@ -19,17 +19,18 @@ object BotSlashAdmin: ListenerAdapter() {
                     .flatMap { event.hook.editOriginalFormat("Pong! : %d ms", System.currentTimeMillis() - time) } // then edit original
                     .queue() // Queue both reply and edit
             }
-            "exchanges" -> {
-                event.reply("환율 수집 중이에요!").setEphemeral(false)
-                    .flatMap { event.hook.editOriginalEmbeds(exchanges()) }
-                    .queue()
-            }
             "exchange" -> {
-                if (event.isCheckOption()) return
-                val value = event.options[0].asString
-                event.reply("환율 수집 중이에요!").setEphemeral(false)
-                    .flatMap { event.hook.editOriginalEmbeds(searchExchange(value)) }
-                    .queue()
+                if (event.options.isEmpty()) {
+                    event.reply("환율 수집 중이에요!").setEphemeral(false)
+                        .flatMap { event.hook.editOriginalEmbeds(exchanges()) }
+                        .queue()
+                    return
+                } else {
+                    val value = event.options[0].asString
+                    event.reply("환율 수집 중이에요!").setEphemeral(false)
+                        .flatMap { event.hook.editOriginalEmbeds(searchExchange(value)) }
+                        .queue()
+                }
             }
             "top-search" -> {
                 event.reply("인기 종목 수집중이에요!").setEphemeral(false)
